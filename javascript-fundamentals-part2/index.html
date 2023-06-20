@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Javascript fundamentals part2</title>
+	</head>
+	<body>
+		<script>
+			const myString = '123';
+			const myNum = Number(myString);
+			console.log(typeof myNum);
+
+			const myNum2 = 123;
+			const myString2 = myNum2.toString();
+			console.log(typeof myString2);
+
+			const song = 'Fight the Youth';
+			const score = 9;
+			const highestScore = 10;
+			const output = `I like the song ${song}. I gave it a score of ${
+				(score / highestScore) * 100
+			}%.`;
+			console.log(output);
+
+			const output2 = `I like the song.
+I gave it a score of 90%.`;
+			console.log(output2);
+
+			const output3 = 'I like the song.\nI gave it a score of 90%.';
+			console.log(output3);
+
+			let text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+			console.log(text.length)
+
+			let fruits = 'Apple, Banana, Kiwi';
+			let fruit = fruits.slice(7, 13);
+			console.log(fruit)
+
+			let fruit2 = fruits.slice(7)
+			console.log(fruit2)
+
+			let fruit3 = fruits.slice(-12)
+			console.log(fruit3)
+
+			let fruit4 = fruits.slice(-12, -6)
+			console.log(fruit4)
+
+			// substring() similaire à slice()
+			let fruit5 = fruits.substring(7, 13)
+			console.log(fruit5)
+
+			// .substring(7,13) === substring(13,7), les indexes sont changés automatiquement
+			let fruit6 = fruits.substring(13, 7)
+			console.log(fruit6)
+
+			// .substring() n'accepte pas les valeurs négatives
+			let fruit7 = fruits.substring(-12, -6)
+			console.log(fruit7)
+
+			let text2 = 'Please visit Microsoft!';
+			let newText = text2.replace('Microsoft', 'W3Schools');
+			console.log(newText)
+
+			let text3 = 'Please visit Microsoft and Microsoft!';
+			let newText2 = text3.replace('Microsoft', 'W3Schools'); // Only replace the first occurrence
+			console.log(newText2) // "Please visit W3Schools and Microsoft!"
+
+			let newText3 = text2.replace('MICROSOFT', 'W3Schools'); // Case sensitive
+			console.log(newText3) // "Please visit Microsoft!"
+
+			let newText4 = text2.replace(/MICROSOFT/i, 'W3Schools'); // Removes sensitiveness
+			console.log(newText4) // "Please visit W3Schools"
+
+			let newText5 = text3.replace(/Microsoft/g, 'W3Schools'); // Replace all occurrence
+			console.log(newText5) // "Please visit W3Schools and W3Schools"
+
+			let newText6 = text3.replaceAll('Microsoft', 'W3Schools'); // Replace all occurrence of "Microsoft", without adding any flags
+			console.log(newText6) // "Please visit W3Schools and W3Schools"
+
+			let greeting = 'Hello World!'
+			let greetingToLower = greeting.toLowerCase()
+			let greetingToUpper = greeting.toUpperCase()
+			console.log(greetingToLower) // "hello world!"
+			console.log(greetingToUpper) // "HELLO WORLD!"
+
+			// .concat === +
+			let firstText = 'Hello'
+			let secondText = 'World!'
+			console.log(firstText.concat(' ' + secondText)) // "Hello World!"
+
+			let textWithSpaceInTheBegginingAndInTheEnd = '  Hello World!  '
+			console.log(textWithSpaceInTheBegginingAndInTheEnd.trim()) // "Hello World!"
+			console.log(textWithSpaceInTheBegginingAndInTheEnd.trimStart()) // "Hello World!  "
+			console.log(textWithSpaceInTheBegginingAndInTheEnd.trimEnd()) // "  Hello World!"
+
+			let five = '5';
+			let padded = five.padStart(4, 'x'); // "Add 'x' until the padded.length === 4"
+			console.log(padded) // "xxx5"
+
+			let paddedEnd = five.padEnd(4, 'x') // "Add 'x' in the end until the paddedEnd.length === 4"
+			console.log(paddedEnd) // "5xxx"
+
+			let charAt3 = greeting.charAt(3) // Return the character at third position in greeting
+			console.log(charAt3) // "3"
+
+			let charCodeAt3 = greeting.charCodeAt(3) // Return the unicode of the character at third position in greeting
+			console.log(charCodeAt3) // 108
+
+			let stringArray = greeting.split(' ') // .split() Convert string to array
+			console.log(stringArray) // ["Hello", "World!"]
+			let stringArray2 = greeting.split('')
+			console.log(stringArray2) // ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!']
+
+			// Exercice 1 :
+			function troubleshooting() {
+				const a = 1;
+				const b = 1;
+
+				let result;
+
+				// Edit between these lines
+				// =================================
+				result = a + b;
+
+				// =================================
+
+				return result;
+			}
+
+			const result = troubleshooting();
+
+			if (result === 2) {
+				console.log('Congrats! You got the correct answer');
+			} else if (typeof result === 'number') {
+				console.log(`You returned the number ${result}, the result should be the number 2`);
+			} else {
+				console.log(`You returned string "${result}", the result should be the number 2`);
+			}
+		</script>
+	</body>
+</html>
