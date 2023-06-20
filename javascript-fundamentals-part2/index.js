@@ -14,6 +14,8 @@ if (b === 66) {
 }
 console.log('\n');
 
+/* Some change */
+
 if (c === 1) {
 	console.log('\'c\' is correct!')
 } else {
