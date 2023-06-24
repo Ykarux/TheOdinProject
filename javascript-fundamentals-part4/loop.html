@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Loop JS fundamentals part4</title>
+		<link href="./style.css"
+		      rel="stylesheet">
+	</head>
+	<body>
+		<div class="output"></div>
+		<script>
+			const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion']
+
+			function Upper(string) {
+				return string.toUpperCase()
+			}
+
+			const upperCats = cats.map(Upper)
+
+			console.log(upperCats) // ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"]
+			console.log(cats) // Doesn't change original value : ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion']
+
+			function lCat(string) {
+				return string.startsWith('L')
+			}
+
+			const filteredCats = cats.filter(lCat)
+			console.log(filteredCats) // ['Leopard', 'Lion']
+			console.log(cats) // Doesn't change original value also : ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion']
+			// .filter() works the same way as .map() except that instead of returning the value that will be included
+			// in the new array, it returns a boolean that tell wether or not the value will be added to the new array
+
+			// When using map and filter, we will mainly use function expression over function declaration
+			// Same functions, rewritten with function expression using arrowed function style
+			const upperCats2 = cats.map((string) => {
+				return string.toUpperCase()
+			})
+			console.log(upperCats2) // ['LEOPARD', 'SERVAL', 'JAGUAR', 'TIGER', 'CARACAL', 'LION']
+			// or
+			const upperCats3 = cats.map((string) => string.toUpperCase())
+			console.log(upperCats3) // ['LEOPARD', 'SERVAL', 'JAGUAR', 'TIGER', 'CARACAL', 'LION']
+			// or without arrow function (function anonymous)
+			const upperCats4 = cats.map(function (string) {
+				return string.toUpperCase()
+			})
+			console.log(upperCats4) // ['LEOPARD', 'SERVAL', 'JAGUAR', 'TIGER', 'CARACAL', 'LION']
+
+			// The same with filter
+			const filteredCats2 = cats.filter((string) => {
+				return string.startsWith('L')
+			})
+			console.log(filteredCats2) // ['Leopard', 'Lion']
+			const filteredCats3 = cats.filter((string) => string.startsWith('L'))
+			console.log(filteredCats3) // ['Leopard', 'Lion']
+			const filteredCats4 = cats.filter(function (string) {
+				return string.startsWith('L')
+			})
+			console.log(filteredCats4) // ['Leopard', 'Lion']
+
+			let div = document.querySelector('.output')
+			for (let i = 10; i >= 0; i--) {
+				if (i) {
+					const para = document.createElement('p')
+					para.textContent = 'Countdown ' + i
+					div.appendChild(para)
+				} else {
+					const para = document.createElement('p')
+					para.textContent = 'Blast Off!'
+					div.appendChild(para)
+				}
+			}
+		</script>
+	</body>
+</html>
