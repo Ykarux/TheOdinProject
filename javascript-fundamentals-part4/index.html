@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Javascript fundamentals part 4</title>
+	</head>
+	<body>
+		<script>
+			// always declare an array with const. Const define a constant reference to an array, not a constant array
+			const cars = ['bmw', 'audi', 'mercedes']
+			// declaration on multiples lines
+			const cars2 = ['bmw',
+				'audi',
+				'mercedes']
+			const fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
+			console.log(fruits.toString()) // "Banana,Orange,Apple,Mango"
+
+			// Arrays are objects
+			const person = ['Me', 'You', 'Him']
+			console.log(typeof person) // object
+			// main difference is that array use number to access its "elements" where object use name
+
+			// Arrays elements can be anthing
+			let myNum = 5
+			let myString = '10'
+			let myBool = true
+			let myObj = {x: 5}
+			let myFunc = function () {
+				return 10
+			}
+			const myArray = [myNum, myString, myBool, myObj, myFunc]
+
+			// length property
+			console.log(myArray.length) // 5
+
+			// .forEach method
+			let text = '<ul>'
+			cars.forEach(createListOnArray)
+
+			function createListOnArray(value) {
+				text += '<li>' + value + '</li>'
+			}
+
+			text += '</ul>'
+
+			// .push() methods
+			const fruits2 = ['Banana', 'Orange', 'Apple'];
+			fruits2.push('Lemon');  // Adds a new element (Lemon) to fruits
+			console.log(fruits2) // ['Banana', 'Orange', 'Apple', 'Lemon']
+
+			// WARNING : DO NOT USE NAMED INDEXES. THEY ARE NOT SUPPORTED BY JAVASCRIPT
+			// JS ONLY SUPPORT NUMBERED INDEXES
+			// TRYING TO USE NAMED INDEXES WILL RESULT IN ARRAY BEING OVERWRITTEN ON AN OBJECT
+			const person2 = [];
+			person2['firstName'] = 'John';
+			person2['lastName'] = 'Doe';
+			person2['age'] = 46;
+			person2.length;     // Will return 0
+			person2[0];         // Will return undefined
+			// In javascript, object use named indexes
+			// whereas array use numbered index
+
+			const points = new Array(50, 100, 200, 300) // same result
+			const points2 = [50, 100, 200, 300] // same result
+
+			// However, creating an array with new keywords and only one argument is not the same
+			const points4 = [40] // not the same as
+			const points5 = new Array(40) // this
+
+			// Creating an array with new keyword and one argument will pass that element as the number of element in the array
+			const points6 = new Array(50) // create an array of 50 undefined elements
+
+			// How to know if something is an array :
+			Array.isArray(cars) // true
+			cars instanceof Array // true
+		</script>
+	</body>
+</html>
