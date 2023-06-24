@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Array - Javascript fundamentals part 4</title>
+	</head>
+	<body>
+		<script>
+			// always declare an array with const. Const define a constant reference to an array, not a constant array
+			const cars = ['bmw', 'audi', 'mercedes']
+			// declaration on multiples lines
+			const cars2 = ['bmw',
+				'audi',
+				'mercedes']
+			const fruits = ['Banana', 'Orange', 'Apple', 'Mango'];
+			console.log(fruits.toString()) // "Banana,Orange,Apple,Mango"
+
+			// Arrays are objects
+			const person = ['Me', 'You', 'Him']
+			console.log(typeof person) // object
+			// main difference is that array use number to access its "elements" where object use name
+
+			// Arrays elements can be anthing
+			let myNum = 5
+			let myString = '10'
+			let myBool = true
+			let myObj = {x: 5}
+			let myFunc = function () {
+				return 10
+			}
+			const myArray = [myNum, myString, myBool, myObj, myFunc]
+
+			// length property
+			console.log(myArray.length) // 5
+
+			// .forEach method
+			let text = '<ul>'
+			cars.forEach(createListOnArray)
+
+			function createListOnArray(value) {
+				text += '<li>' + value + '</li>'
+			}
+
+			text += '</ul>'
+
+			// .push() methods
+			const fruits2 = ['Banana', 'Orange', 'Apple'];
+			fruits2.push('Lemon');  // Adds a new element (Lemon) to fruits
+			console.log(fruits2) // ['Banana', 'Orange', 'Apple', 'Lemon']
+
+			// WARNING : DO NOT USE NAMED INDEXES. THEY ARE NOT SUPPORTED BY JAVASCRIPT
+			// JS ONLY SUPPORT NUMBERED INDEXES
+			// TRYING TO USE NAMED INDEXES WILL RESULT IN ARRAY BEING OVERWRITTEN ON AN OBJECT
+			const person2 = [];
+			person2['firstName'] = 'John';
+			person2['lastName'] = 'Doe';
+			person2['age'] = 46;
+			person2.length;     // Will return 0
+			person2[0];         // Will return undefined
+			// In javascript, object use named indexes
+			// whereas array use numbered index
+
+			const points = new Array(50, 100, 200, 300) // same result
+			const points2 = [50, 100, 200, 300] // same result
+
+			// However, creating an array with new keywords and only one argument is not the same
+			const points4 = [40] // not the same as
+			const points5 = new Array(40) // this
+
+			// Creating an array with new keyword and one argument will pass that element as the number of element in the array
+			const points6 = new Array(50) // create an array of 50 undefined elements
+
+			// How to know if something is an array :
+			Array.isArray(cars) // true
+			cars instanceof Array // true
+
+			console.log(cars.join(' * ')) // bmw * audi * mercedes
+
+			const myArray2 = ['firstElement', 'secondElement', 'thirdElement']
+			myArray2.pop() // ['firstElement', 'secondElement']
+			myArray2.push('fourthElement') // ['firstElement', 'secondElement', 'fourthElement']
+
+			// .shit() -> remove the first elements and shifts all other to one index lower
+			myArray2.shift() // ['secondElement', 'fourthElement']
+			myArray2.unshift('fifthElement') // ['fifthElement', 'secondElement', 'fourthElement']
+
+			// Array elements can be deleted using delete keyword
+			// but it will not shift other elements
+			delete myArray2[1]
+			console.log(myArray2) // ['fifthElement', empty, 'fourthElement']
+			console.log(myArray2[1]) // undefined
+
+			const myGirls = ['Emilia', 'Cecilia']
+			const myBoys = ['Roberto', 'Toretto', 'Christiano']
+			const myChildren = myGirls.concat(myBoys)
+			console.log(myChildren) // ['Emilia', 'Cecilia', 'Roberto', 'Toretto', 'Christiano']
+
+			// the .concat() method can take any number of array
+			const arr1 = ['Emilia', 'Cecilia']
+			const arr2 = ['Roberto', 'Toretto']
+			const arr3 = ['Christiano', 'Antonio']
+			const arr4 = ['Mia', 'Sia']
+			const arr5 = arr1.concat(arr2, arr3, arr4)
+			console.log(arr5) // ['Emilia', 'Cecilia', 'Roberto', 'Toretto', 'Christiano', 'Antonio', 'Mia', 'Sia']
+			// However, it doesn't change any array, it just return the value
+			console.log(arr1) // ['Emilia', 'Cecilia']
+			console.log(arr2) // ['Roberto', 'Toretto']
+
+			// the .concat() method can also take argument as any type
+			const arr6 = arr1.concat('Roberto', true)
+			console.log(arr6) // ['Emilia', 'Cecilia', 'Roberto', true]
+
+			// .flat() reduce the dimension of an array by merging his children arrays
+			const myArr = [[1, 2], [3, 4], [5, 6]];
+			const newArr = myArr.flat();
+			console.log(newArr) // [1,2,3,4,5,6]
+
+			const fruits3 = ['Banana', 'Orange', 'Apple', 'Mango'];
+			fruits3.splice(2, 0, 'Lemon', 'WaterMelon')
+			console.log(fruits3) // ['Banana', 'Orange', 'Lemon', 'WaterMelon', 'Apple', 'Mango']
+			// .splice(where element should be added, how much element should be removed, ...elements to add)
+
+			// You can use .splice method to remove element in array without leaving empty element
+			fruits3.splice(3, 1)
+			console.log(fruits3) // ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+
+			const fruits4 = ['Banana', 'Orange', 'Apple', 'Mango', 'strawberrys']
+			const fruits5 = fruits4.slice(2)
+			console.log(fruits5) // ['Apple', 'Mango', 'strawberrys']
+			// However it doesn't change the original array
+			console.log(fruits4) // ['Banana', 'Orange', 'Apple', 'Mango', 'strawberrys']
+
+			// You can also use it with two arguments, it will then select the elements from the first argument position
+			// (including) and end up in the second argument position (excluding)
+			const fruits6 = fruits4.slice(1, 3)
+			console.log(fruits6) // ['Orange, Apple']
+
+			// AUTOMATIC TO STRING
+		</script>
+	</body>
+</html>
