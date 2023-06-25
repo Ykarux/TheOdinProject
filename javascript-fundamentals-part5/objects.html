@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Javascript Fundamentals part 5</title>
+	</head>
+	<body>
+		<script>
+			let myObj = {} // literal syntax
+			let mySecondObj = new Object() // constructor syntax
+
+			let user = {
+				name: 'John',
+				age: 30,
+				'like birds': false // using multiwords : add quotes
+			}
+
+			console.log(user.name) // accessing property
+			user.isAdmin = true // setting property
+			delete user.isAdmin // deleting property
+
+			// console.log(user.like birds) -> can't use dot notation on multiword properties
+			console.log(user['like birds']) // works !
+			// we can also set and delete
+			user['like birds'] = true
+			delete user['like birds']
+
+			user['like birds'] = true
+			let key = 'like birds'
+			user[key] = false
+			console.log(user['like birds']) // false
+			console.log(user.key) // not working : undefined
+
+			let fruit = 'apple'
+			let bag = {
+				[fruit]: 5
+			}
+			console.log(bag.apple) // 5
+			// We can also use more complexe expression inside the square brackets
+			let secondBag = {
+				[fruit + 'computed']: 5
+			}
+			console.log(secondBag.applecomputed) // 5
+
+			// Property shorthand
+			let name = 'John'
+			let age = 30
+			let user2 = {
+				name,
+				age,
+				likeBirds: true // we can use shorthand and normal declaration in the same time
+			}
+			console.log(user2) // {name: 'john', age: 30, 'likeBirds': true}
+
+			// No restriction for keywords on object properties
+			let obj = {
+				for: 1,
+				let: 5,
+				return: true
+			}
+			console.log(obj) // {for: 1, let: 5, return: true}
+
+			// Not string types are automatically converted to string
+			let anotherObj = {
+				0: 'hihi', // this is a number -> converted to string automatically
+				true: 'haha' // this is a string (not a boolean)
+			}
+			console.log(anotherObj.true) // haha
+			console.log(anotherObj['0'])
+
+			// in operator
+			console.log('age' in user) // true
+			console.log('notAProperty' in user) // false
+
+			// we can compare with undefined, but it doesn't work when a value store undefined itself
+			let testObj = {
+				name: 'john',
+				age: undefined
+			}
+			console.log(testObj.name !== undefined) // true
+			console.log(testObj.age !== undefined) // false (expected true, cause value is undefined
+			console.log('name' in testObj) // true
+			console.log('age' in testObj) // true
+
+			let user3 = {
+				name: 'john',
+				age: 30,
+				likeBirds: true
+			}
+			// for in loop
+			for (const userKey in user3) {
+				console.log(userKey) // name, age, likeBirds
+				console.log(user3[userKey]) // 'john', 30, true
+			}
+
+			// If the keys are integer, they are listed ordered
+			let codes = {
+				45: 'this is 45',
+				26: 'this is 26',
+				56: 'this is 56'
+			}
+			for (const codesKey in codes) {
+				console.log(codesKey) // 26, 45, 56
+			}
+			// Otherwise, they are listed by creation order
+			let names = {
+				'lastName': 'guillaume',
+				'firstName': 'giannantonio',
+				'fullName': 'guillaume giannantonio'
+			}
+			for (const namesKey in names) {
+				console.log(namesKey) // lastName, firstName, fullName
+			}
+
+            
+		</script>
+	</body>
+</html>
