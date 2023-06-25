@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Exercice 3</title>
+	</head>
+	<body>
+		<script>
+			function camelize(string) {
+				return string.split('-').join('')
+			}
+
+			function filterRange(arr, a, b) {
+				let result = []
+				arr.map(e => {
+					if (e >= a && e < b) {
+						result.push(e)
+					}
+				})
+				return result
+			}
+
+			const arr = [5, 3, 8, 1]
+			console.log(filterRange(arr, 1, 4))
+
+			function filterRangeInPlace(arr, a, b) {
+				for (const arrElement of arr) {
+					console.log(arrElement + ' /')
+					if (arrElement < a || arrElement > b) {
+						arr.splice(arr.findIndex(arrElement => arrElement < a || arrElement > b), 1)
+						console.log('its is')
+					}
+				}
+			}
+
+			let arr2 = [5, 3, 8, 1]
+			filterRangeInPlace(arr2, 1, 4)
+			console.log(arr2)
+
+			let arr3 = [5, 2, 1, -10, 8]
+			console.log(arr3.sort((a, b) => b - a))
+
+			function copySorted(arr) {
+				arr.slice().sort()
+			}
+
+			let john = {name: 'John', age: 25};
+			let pete = {name: 'Pete', age: 30};
+			let mary = {name: 'Mary', age: 28};
+			let users = [john, pete, mary];
+			let names = users.map(e => e.name)
+			console.log(names); // John, Pete, Mary
+
+			function sortByAge(arr) {
+				arr.sort((a, b) => a.age - b.age)
+			}
+
+			sortByAge(users)
+			console.log(users)
+
+			function shuffle(arr) {
+				for (let i = 0; i < arr.length; i++) {
+					let indexToSwitch = (Math.random() * arr.length).toFixed(0)
+					let temp = arr[indexToSwitch]
+					arr[indexToSwitch] = arr[i]
+					arr[i] = temp
+				}
+			}
+
+			let arr4 = [1, 2, 3]
+			shuffle(arr4)
+			console.log(arr4)
+
+			function getAverageAge(arr) {
+
+				let avg = arr.reduce((total, element) => {
+					return total + element.age
+				}, 0)
+				avg /= arr.length
+				return avg
+			}
+
+			console.log(getAverageAge(users))
+
+			let strings = ['Hare', 'Krishna', 'Hare', 'Krishna',
+				'Krishna', 'Krishna', 'Hare', 'Hare', ':-O'
+			];
+
+			function unique(arr) {
+				let result = []
+				arr.map((e) => {
+					if (!result.includes(e)) {
+						result.push(e)
+					}
+				})
+				return result
+			}
+
+			console.log(unique(strings))
+
+			let users2 = [
+				{id: 'john', name: 'John Smith', age: 20},
+				{id: 'ann', name: 'Ann Smith', age: 24},
+				{id: 'pete', name: 'Pete Peterson', age: 31},
+			];
+
+			function groupById(users) {
+				return users.reduce((obj, user) => {
+					obj[user.id] = user
+					return obj
+				}, {})
+			}
+
+			console.log(groupById(users2))
+		</script>
+	</body>
+</html>
