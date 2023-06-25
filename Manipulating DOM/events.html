@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Events</title>
+	</head>
+	<body>
+		<button id="btn">Click me!</button>
+		<script>
+
+			function getRandomRGB() {
+				return 'rgb(' + Math.random() * 256 + ',' + Math.random() * 256 + ',' + Math.random() * 256 + ')'
+			}
+
+			const button = document.querySelector('#btn')
+			button.addEventListener('click', (e) => {
+				e.target.style.backgroundColor = getRandomRGB()
+				e.target.style.border = '1px solid ' + getRandomRGB()
+			})
+		</script>
+	</body>
+</html>
